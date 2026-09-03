@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Privacy Policy - Florecho</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Privacy Policy for Florecho: Plant Identifier for iOS, published by TuranliApp.">
+<style>
+  :root { --ink:#173A2A; --accent:#587449; --line:#D9E2D3; --bg:#FBFCF7; --soft:#EEF3E5; --muted:#627069; }
+  body { max-width: 46rem; margin: 0 auto; padding: 2rem 1.25rem 5rem;
+         font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         color: var(--ink); background: var(--bg); }
+  h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 .4rem; }
+  h2 { font-size: 1.2rem; margin: 2.4rem 0 .7rem; padding-top: 1.1rem; border-top: 1px solid var(--line); }
+  h3 { font-size: 1rem; margin: 1.5rem 0 .5rem; color: var(--accent); }
+  .updated { color: var(--muted); margin: 0 0 2rem; font-size: .92rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .93rem; display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--line); padding: .55rem .7rem; text-align: left; vertical-align: top; }
+  th { background: var(--soft); font-weight: 600; }
+  .box { background: var(--soft); border-left: 3px solid var(--accent); padding: .9rem 1.1rem; margin: 1.2rem 0; border-radius: 0 6px 6px 0; }
+  a { color: var(--accent); }
+  li { margin: .3rem 0; }
+  footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--line); font-size: .9rem; color: var(--muted); }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#E7F0E7; --accent:#B9D49E; --line:#3D5145; --bg:#142219; --soft:#1D3024; --muted:#AEC0B3; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy - Florecho</h1>
+<p class="updated">Last Updated: September 3, 2026</p>
+
+<p>This Privacy Policy describes how <strong>Florecho: Plant Identifier</strong> ("Florecho" or the "App"), an iOS application published by TuranliApp, processes information when you use the App.</p>
+
+<div class="box">
+<p><strong>This policy covers Florecho only.</strong> TuranliApp publishes other applications with different features and data practices. Where the <a href="https://ilgiso91.github.io/turanli-privacy/">general TuranliApp Privacy Policy</a> differs from this page, this Florecho-specific policy governs your use of Florecho.</p>
+</div>
+
+<p>Florecho does not require an account. It does not contain advertising or cross-app tracking. A plant photo leaves your device only when you choose to start an AI scan. The exact processing path and service providers are described below.</p>
+
+<h2>1. WHO WE ARE</h2>
+<p>
+<strong>Data Controller:</strong> TuranliApp<br>
+<strong>Contact:</strong> <a href="mailto:ismailturanli91@gmail.com">ismailturanli91@gmail.com</a><br>
+<strong>Application:</strong> Florecho: Plant Identifier (iOS)
+</p>
+
+<h2>2. INFORMATION PROCESSED</h2>
+
+<table>
+<tr><th>Information</th><th>When it is processed</th><th>Purpose</th></tr>
+<tr><td>Plant photo</td><td>Only when you take or select a photo and start an AI scan</td><td>Plant identification, visible-condition assessment, and informational safety observations</td></tr>
+<tr><td>Scan type and App language</td><td>Sent with the selected plant photo</td><td>To return the requested type of result in an appropriate language</td></tr>
+<tr><td>Anonymous installation and device-integrity signals</td><td>When AI features are used</td><td>Device verification, service security, abuse prevention, and the daily AI-request limit</td></tr>
+<tr><td>IP address and request metadata</td><td>Automatically visible to AIProxy when an AI request is transmitted</td><td>Routing, service operation, usage limits, security, and diagnostics</td></tr>
+<tr><td>Anonymous purchase and subscription history</td><td>When products, entitlements, purchases, or restores are checked</td><td>To display subscriptions, verify Premium access, and restore purchases</td></tr>
+<tr><td>Support correspondence</td><td>Only if you contact us</td><td>To answer your question or privacy request</td></tr>
+</table>
+
+<h3>Information Florecho does not request</h3>
+<ul>
+<li>The App does not require a user account, name, email address, phone number, or postal address.</li>
+<li>The App does not request contacts, microphone audio, HealthKit data, or precise or approximate location.</li>
+<li>The App does not access your payment-card details. Apple handles payment.</li>
+<li>The App does not use the Advertising Identifier (IDFA) and does not track you across other companies' apps or websites.</li>
+</ul>
+
+<h2>3. PLANT PHOTOS AND AI ANALYSIS</h2>
+
+<h3>3.1 When a photo leaves your device</h3>
+<p>Camera and photo-library access are optional. Florecho accesses only the photo you capture in the App or select through Apple's photo picker. After you choose to analyze it, the App resizes and compresses the image and sends it over an encrypted connection in this order:</p>
+
+<table>
+<tr><th>Step</th><th>Provider</th><th>Purpose</th></tr>
+<tr><td>1. Proxy and abuse protection</td><td><strong>AIProxy</strong> (aiproxy.com)</td><td>Verifies the App/device, enforces usage limits, and forwards the request without exposing the full AI-provider credential in the App</td></tr>
+<tr><td>2. AI analysis</td><td><strong>OpenAI API</strong></td><td>Analyzes visible plant features and generates the structured result returned to Florecho</td></tr>
+</table>
+
+<p>TuranliApp does not operate a separate server that stores the plant photo or AI result. The App also does not add the plant photo to its diagnostic event log.</p>
+
+<div class="box">
+<p><strong>Photograph plants only.</strong> Do not include people, faces, documents, addresses, screens, or other personal information in a scan. Anything visible in the selected image is transmitted to the processors above.</p>
+</div>
+
+<h3>3.2 OpenAI processing</h3>
+<p>Florecho sends the request with storage disabled for the Responses API. OpenAI states that API inputs and outputs are not used to train its models by default unless the API customer explicitly opts in. OpenAI may nevertheless retain API content in abuse-monitoring logs for up to 30 days by default, or longer where legally required. For current details, see <a href="https://platform.openai.com/docs/models/default-usage-policies-by-endpoint">OpenAI API Data Controls</a>.</p>
+
+<h3>3.3 AIProxy processing</h3>
+<p>According to AIProxy's published policy, it records the originating IP address, response status, request metadata such as input-token counts, and the response body only when a request returns an error status. AIProxy states that this information is retained for 30 days. See <a href="https://www.aiproxy.com/privacy.html">AIProxy Privacy Policy</a>.</p>
+
+<h3>3.4 Anonymous safety identifier</h3>
+<p>Florecho creates a random identifier for the App installation, stores it locally, and sends only a one-way SHA-256 hash of that value to OpenAI as a safety identifier. It is used for abuse prevention and is not based on your name, email address, Apple Account, photo contents, or advertising identifier.</p>
+
+<h2>4. AI RESULTS AND SAFETY</h2>
+<p>AI output is automated and can be inaccurate, incomplete, or fabricated. Florecho presents confidence as an estimate and may ask for another photo instead of returning a definite identification. AI results are informational only and are not professional botanical, medical, veterinary, or emergency advice.</p>
+<p>Never use an AI result to decide whether a plant, berry, mushroom, or other substance is edible or safe to touch, use, or give to a person or animal. For possible ingestion, poisoning, irritation, exposure, or symptoms, contact an appropriate emergency service, poison center, medical professional, or veterinarian promptly.</p>
+
+<h2>5. DEVICE PERMISSIONS</h2>
+<table>
+<tr><th>Permission</th><th>Use</th></tr>
+<tr><td>Camera</td><td>To photograph a plant when you choose to scan it</td></tr>
+<tr><td>Photo Library</td><td>To let you select a plant photo through Apple's photo picker</td></tr>
+<tr><td>Notifications</td><td>To provide optional plant-care reminders when that feature is enabled</td></tr>
+</table>
+<p>You can deny or revoke these permissions in iOS Settings. Non-scan parts of the App remain available without sending a plant photo.</p>
+
+<h2>6. PURCHASES AND SUBSCRIPTIONS</h2>
+<p>Purchases are completed by Apple through the App Store. TuranliApp does not receive your payment-card number. Florecho uses <strong>RevenueCat</strong> to load subscription products, validate purchase receipts, determine whether Premium access is active, and restore purchases.</p>
+<p>RevenueCat receives an anonymous App User ID and purchase history needed for these functions. Florecho does not attach a name, email address, or account profile to that anonymous identifier. RevenueCat also uses purchase data for service analytics and fraud prevention under its <a href="https://www.revenuecat.com/privacy">Privacy Policy</a>.</p>
+
+<h2>7. INFORMATION STORED ON YOUR DEVICE</h2>
+<p>Florecho stores limited preferences locally, including whether onboarding has been completed, Sound Garden session state, and the random installation identifier described above. A photo selected for analysis is held for the active scan flow; Florecho does not upload it to a TuranliApp-owned photo library or account.</p>
+<p>Deleting the App removes Florecho's locally stored preferences and installation identifier, subject to any device backup behavior controlled by Apple and your device settings. Deleting the App does not cancel an App Store subscription; subscriptions are managed in your Apple Account settings.</p>
+
+<h2>8. ANALYTICS, ADVERTISING, AND TRACKING</h2>
+<p>The current version of Florecho contains no advertising SDK and no cross-app or cross-site tracking SDK. It does not request App Tracking Transparency permission.</p>
+<p>Florecho records limited fixed screen and feature events in Apple's local unified system log for debugging. These events do not contain plant photos or free-form user notes, and the current version does not transmit them to Firebase Analytics or another TuranliApp analytics backend. AIProxy and RevenueCat process the limited service metadata described in Sections 3 and 6.</p>
+
+<h2>9. SERVICE PROVIDERS</h2>
+<table>
+<tr><th>Provider</th><th>Role</th><th>Information involved</th></tr>
+<tr><td>Apple Inc.</td><td>App distribution, device permissions, and App Store payments</td><td>Information handled by Apple under your Apple Account and device settings</td></tr>
+<tr><td>AIProxy</td><td>AI request proxy, device verification, usage limits, and abuse protection</td><td>Plant-photo request, device-integrity signal, IP address, status, and request metadata</td></tr>
+<tr><td>OpenAI</td><td>AI plant analysis</td><td>Plant photo, scan type, language instructions, anonymous hashed safety identifier, and generated result</td></tr>
+<tr><td>RevenueCat, Inc.</td><td>Subscription management and entitlement verification</td><td>Anonymous App User ID and purchase/subscription history</td></tr>
+</table>
+
+<h2>10. HOW WE USE AND SHARE INFORMATION</h2>
+<p>Information is processed only to provide the feature you request, operate subscriptions, enforce usage limits, protect the service, diagnose errors, answer support requests, and comply with legal obligations. TuranliApp does not sell personal information and does not share it for targeted advertising or cross-context behavioral advertising.</p>
+<p>Information may be disclosed to the service providers listed above for their stated roles, or when required by applicable law, valid legal process, or to protect users, the service, or legal rights.</p>
+
+<h2>11. RETENTION AND DELETION</h2>
+<ul>
+<li><strong>TuranliApp:</strong> We do not keep a server-side Florecho account, plant-photo library, or copy of completed AI scans.</li>
+<li><strong>On-device information:</strong> Preferences remain until reset or the App is deleted.</li>
+<li><strong>AIProxy:</strong> The network and request metadata described in Section 3.3 is retained for 30 days under its current published policy.</li>
+<li><strong>OpenAI:</strong> API content may be retained in abuse-monitoring logs for up to 30 days by default, subject to OpenAI's current controls and legal exceptions.</li>
+<li><strong>RevenueCat and Apple:</strong> Purchase records are retained under their respective policies and legal obligations.</li>
+<li><strong>Support:</strong> If you email us, we retain the correspondence only as reasonably necessary to answer the request, maintain support records, or meet legal obligations.</li>
+</ul>
+<p>Because Florecho scans are not connected to a TuranliApp account and TuranliApp keeps no server copy, we generally cannot retrieve or identify a particular completed scan. You may contact us for assistance with a privacy request concerning information under our control.</p>
+
+<h2>12. LEGAL BASES FOR PROCESSING</h2>
+<p>Where the GDPR, UK GDPR, or similar law applies, processing is based on:</p>
+<ul>
+<li><strong>Performance of a contract or steps you request:</strong> providing AI analysis and subscription features;</li>
+<li><strong>Consent:</strong> optional Camera, Photos, and Notifications access, which you can withdraw in iOS Settings;</li>
+<li><strong>Legitimate interests:</strong> securing the service, preventing abuse, enforcing fair-use limits, and diagnosing failures; and</li>
+<li><strong>Legal obligations:</strong> compliance with applicable law and valid legal requests.</li>
+</ul>
+
+<h2>13. INTERNATIONAL DATA TRANSFERS</h2>
+<p>AIProxy, OpenAI, RevenueCat, and Apple may process information in the United States and other countries whose data-protection rules may differ from those where you live. Their processing and transfer safeguards are governed by their applicable terms, privacy policies, and data-protection arrangements.</p>
+
+<h2>14. SECURITY</h2>
+<p>Network requests are encrypted in transit using HTTPS/TLS. The full OpenAI API credential is not embedded in the App; AIProxy uses a split-key and device-verification design to forward authorized requests. We also minimize image size and the metadata sent with a scan.</p>
+<p>No transmission or storage method is completely secure, and we cannot guarantee absolute security.</p>
+
+<h2>15. YOUR RIGHTS AND CHOICES</h2>
+<p>Depending on where you live, you may have rights to access, correct, delete, restrict, or object to processing; receive a portable copy; withdraw consent; and complain to a data-protection authority.</p>
+<ul>
+<li>Do not start a scan if you do not want a photo sent for AI processing.</li>
+<li>Change Camera, Photos, and Notifications permissions in iOS Settings.</li>
+<li>Delete the App to remove its local preferences and installation identifier.</li>
+<li>Manage or cancel subscriptions in your Apple Account settings.</li>
+<li>Contact <a href="mailto:ismailturanli91@gmail.com">ismailturanli91@gmail.com</a> for a request concerning data under TuranliApp's control.</li>
+</ul>
+<p>We normally respond to privacy requests within 30 days. We may need enough information to verify and understand a request, but we will not ask for information that is unnecessary for that purpose.</p>
+
+<h2>16. CHILDREN'S PRIVACY</h2>
+<p>Florecho does not knowingly request a child's name, contact details, account, or precise location. Children should use the App with parent or guardian guidance and must not submit photos containing themselves, other people, or personal information. If you believe a child has sent personal information to us, contact us so we can evaluate and address the request.</p>
+
+<h2>17. CHANGES TO THIS POLICY</h2>
+<p>We may update this policy when Florecho's features, providers, or legal requirements change. We will revise the date at the top and make material changes available before the affected App version is released. Please review the current policy when updating the App.</p>
+
+<h2>18. CONTACT AND TERMS</h2>
+<p>
+<strong>Data Controller:</strong> TuranliApp<br>
+<strong>Email:</strong> <a href="mailto:ismailturanli91@gmail.com">ismailturanli91@gmail.com</a><br>
+<strong>Application:</strong> Florecho: Plant Identifier (iOS)
+</p>
+<p>Unless TuranliApp publishes custom terms for Florecho, the <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple Standard Licensed Application End User License Agreement</a> applies.</p>
+
+<footer>
+By using Florecho, you acknowledge that you have read and understood this Privacy Policy.
+</footer>
+
+</body>
+</html>
