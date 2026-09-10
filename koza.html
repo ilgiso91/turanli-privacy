@@ -30,7 +30,7 @@
 <body>
 
 <h1>Privacy Policy - Koza</h1>
-<p class="updated">Last Updated: August 25, 2026</p>
+<p class="updated">Last Updated: September 10, 2026</p>
 
 <p>This Privacy Policy describes how <strong>Koza</strong> (the "App"), a pregnancy tracking application for iOS published by TuranliApp, collects, uses, stores, and protects your information.</p>
 
@@ -85,7 +85,7 @@
 <li>We do not collect your location. The App requests no location permission.</li>
 <li>We do not collect advertising identifiers. The App does not use the Advertising Identifier (IDFA) and does not include the Firebase component that would collect it.</li>
 <li>We collect limited usage analytics and crash diagnostics, described in full in Section 7. These never include your name, email address, pregnancy dates or week, any health value, or anything you type.</li>
-<li>We do not collect payment information. Where Koza offers optional subscriptions, the purchase is completed by Apple and your payment details are handled by Apple, never by us.</li>
+<li>We do not collect payment information. Where Koza offers optional subscriptions, the purchase is completed by Apple and your payment details are handled by Apple, never by us. Your subscription status and purchase history are processed by RevenueCat on our behalf, as described in Sections 8 and 12.</li>
 </ul>
 
 <h2>3. APPLE HEALTH (HEALTHKIT)</h2>
@@ -169,6 +169,7 @@
 <h2>7. ANALYTICS, ADVERTISING, AND TRACKING</h2>
 
 <p>Koza contains <strong>no advertising software and no cross-app or cross-site tracking software</strong>. It does contain analytics and crash reporting, provided by Google LLC (Firebase Analytics and Firebase Crashlytics), used only to see which screens are used and to find crashes.</p>
+<p>Separately, RevenueCat (Section 12) uses your purchase and subscription history to provide us with subscription statistics, for example how many people start, renew, or cancel a subscription. These records are tied to the anonymous identifier described in Section 12, not to your name or your account, and never include your health information or anything you type.</p>
 
 <div class="box">
 <p><strong>Your health information is never sent to these services.</strong> No event ever carries your name, email address, pregnancy or due dates, pregnancy week, weight, blood pressure, blood glucose, symptoms, kick history, appointments, letters, journal entries, mood, photos, or anything you type - including anything you type into the assistant.</p>
@@ -207,6 +208,7 @@
 <tr><td>Firebase Crashlytics</td><td>Google LLC</td><td>Crash and error reporting (Section 7)</td></tr>
 <tr><td>Assistant proxy</td><td>AIProxy (aiproxy.com)</td><td>Forwarding assistant messages to the AI provider, so that API credentials are never stored in the App (Section 6)</td></tr>
 <tr><td>AI language model API</td><td>OpenAI, L.L.C.</td><td>Generating assistant replies (Section 6)</td></tr>
+<tr><td>Subscription management</td><td>RevenueCat, Inc.</td><td>Checking and restoring your Koza Premium subscription, and keeping access in step with renewals, cancellations, and refunds reported by Apple (Section 12)</td></tr>
 </table>
 
 <p>These providers act as data processors on our behalf and process your data in accordance with their own terms and applicable data protection agreements. If you use "Sign in with Apple", you may choose to hide your email address; Koza works normally with a private relay address.</p>
@@ -218,6 +220,7 @@
 <li>To share a pregnancy with the family members you have invited.</li>
 <li>To answer the questions you ask the in-App assistant.</li>
 <li>To respond to you when you contact us for support.</li>
+<li>To provide Koza Premium: checking whether you have an active subscription, restoring it on another device, and keeping access in step with renewals, cancellations, and refunds.</li>
 <li>To understand which screens are used and to find and fix crashes, within the limits described in Section 7.</li>
 </ul>
 <p>We do not use your information for advertising, profiling, or automated decision-making, and we do not use it to train machine learning models.</p>
@@ -229,6 +232,7 @@
 <p><strong>Assistant messages.</strong> We keep no copy of them. Their retention is determined by the two providers in Section 6.2: OpenAI retains API content for a limited period for abuse monitoring before deleting it, and AIProxy retains the request logs described there for 30 days. Because we hold no copy and nothing in a message is linked to your account, we cannot retrieve or delete an individual message on request.</p>
 
 <p><strong>Analytics and crash reports.</strong> These are retained by Google LLC according to the retention setting of our Firebase project. Deleting your account does not delete them, because they are not linked to your account identifier - only to a one-way hash of it, as described in Section 7.</p>
+<p><strong>Subscription records.</strong> These are retained by RevenueCat, Inc. according to its own retention policy. Deleting your account does not delete them, because they are tied to an anonymous identifier generated on your device rather than to your account. Your subscription itself belongs to your Apple ID and is managed and cancelled through Apple.</p>
 
 <h3>Deleting your account</h3>
 <p>You can delete your account from within the App, under Profile &gt; Delete My Account. This is a permanent deletion, not a sign-out. It removes:</p>
@@ -260,6 +264,7 @@
 <p>Separately, messages you send to the in-App assistant are processed <strong>in the United States</strong> by <strong>AIProxy</strong> (aiproxy.com), which forwards them, and by <strong>OpenAI, L.L.C.</strong>, which generates the reply, as described in Section 6. Only the text you type is transferred; no data from your account or your records accompanies it. The connection itself carries your IP address, which AIProxy logs.</p>
 
 <p>Analytics and crash reports described in Section 7 are processed by Google LLC and may also be processed outside your country of residence.</p>
+<p>Koza Premium subscriptions are managed by RevenueCat, Inc., which processes the related data in the United States. RevenueCat receives an anonymous identifier generated on your device, your purchase and subscription history for Koza, and technical details sent with each request: your IP address, the identifier Apple assigns to apps from the same developer (identifierForVendor, which is not the advertising identifier), your device model, iOS version, app version, language preferences, and App Store country. It does not receive your name, email address, Koza account ID, payment details, or any pregnancy or health data. Where required, this transfer relies on the safeguards offered by the provider, including Standard Contractual Clauses.</p>
 
 <h2>13. YOUR RIGHTS</h2>
 
