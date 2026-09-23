@@ -8,218 +8,324 @@
 <meta name="color-scheme" content="light dark">
 <style>
   :root {
-    --navy: #101620;
-    --orange: #FF9F2F;
-    --cream: #F5F0E6;
-    --purple: #A776F0;
-    --coral: #FF695D;
+    --bg: #ede9df;
+    --ink: #151411;
+    --muted: #4f4a42;
+    --paper: #f8f4e9;
+    --accent: #f28a2f;
+    --accent-ink: #151411;
+    --shadow: #151411;
+    --rule: 3px;
 
-    --bg: var(--cream);
-    --ink: var(--navy);
-    --muted: #5B6475;
-    --paper: #FFFDF8;
-    --wall: var(--navy);
-    --link: #A94B0E;
-    --tint: rgba(255, 159, 47, .18);
-    --heat: #C2570C;
-
-    --round: ui-rounded, "SF Pro Rounded", "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --display: "Arial Black", "Helvetica Neue", Arial, sans-serif;
     --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: var(--navy);
-      --ink: var(--cream);
-      --muted: #A9A395;
-      --paper: #182030;
-      --wall: var(--cream);
-      --link: var(--orange);
-      --tint: rgba(255, 159, 47, .14);
-      --heat: var(--orange);
+      --bg: #171714;
+      --ink: #f3eee3;
+      --muted: #c0b9ab;
+      --paper: #24231e;
+      --accent: #f6a145;
+      --accent-ink: #171714;
+      --shadow: #f6a145;
     }
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font: 16px/1.6 var(--body);
+    font: 16px/1.58 var(--body);
     -webkit-text-size-adjust: 100%;
   }
-  a { color: var(--link); text-underline-offset: 2px; }
-  a:focus-visible, summary:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+  a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 4px solid var(--accent); outline-offset: 4px; }
   img { max-width: 100%; display: block; }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
 
-  .wrap { max-width: 64rem; margin: 0 auto; padding: 0 1rem; }
+  .skip-link {
+    position: fixed;
+    z-index: 20;
+    top: .75rem;
+    left: .75rem;
+    padding: .65rem .85rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: var(--rule) solid var(--ink);
+    font-weight: 900;
+    transform: translateY(-180%);
+  }
+  .skip-link:focus { transform: translateY(0); }
+  .wrap { max-width: 76rem; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2rem); }
 
   .eyebrow {
-    font: 700 .72rem/1.2 var(--mono);
-    letter-spacing: .12em;
+    display: inline-block;
+    margin: 0 0 1.2rem;
+    padding: .4rem .6rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 2px solid var(--ink);
+    font: 900 .72rem/1 var(--mono);
+    letter-spacing: .08em;
     text-transform: uppercase;
-    color: var(--link);
-    margin: 0 0 .7rem;
   }
 
-  /* Header */
-  header { padding: 2.5rem 0 1.5rem; }
+  .site-bar {
+    min-height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: var(--rule) solid var(--ink);
+    font: 900 .82rem/1 var(--mono);
+    letter-spacing: .05em;
+  }
+  .site-bar a { text-decoration: none; }
+  .site-bar a:last-child {
+    padding: .7rem .85rem;
+    border: 2px solid var(--ink);
+    background: var(--paper);
+    box-shadow: 4px 4px 0 var(--shadow);
+  }
+  .site-bar a:last-child:hover { background: var(--accent); color: var(--accent-ink); }
+
+  .hero {
+    min-height: min(43rem, calc(100dvh - 4.5rem));
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(17rem, .7fr);
+    align-items: center;
+    gap: clamp(2rem, 6vw, 5rem);
+    padding: clamp(3rem, 8vw, 6rem) 0;
+  }
   h1 {
-    font: 900 clamp(2.1rem, 7vw, 3.6rem)/1.02 var(--round);
-    letter-spacing: -.02em;
-    margin: 0 0 .9rem;
-    max-width: 14ch;
+    max-width: 13ch;
+    margin: 0 0 1.25rem;
+    font: 950 clamp(3.2rem, 6vw, 5.2rem)/.88 var(--display);
+    letter-spacing: -.075em;
+    text-transform: uppercase;
   }
-  h1 em { font-style: normal; color: var(--heat); }
-  .lede { font-size: 1.08rem; color: var(--muted); max-width: 38rem; margin: 0; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .lede { max-width: 34rem; margin: 0; font-size: clamp(1rem, 2vw, 1.18rem); color: var(--muted); }
+  .hero-media {
+    margin: 0;
+    border: var(--rule) solid var(--ink);
+    background: var(--paper);
+    box-shadow: 10px 10px 0 var(--shadow);
+    transform: rotate(2deg);
+  }
+  .hero-media img {
+    width: 100%;
+    height: clamp(20rem, 56vh, 34rem);
+    object-fit: cover;
+    object-position: 50% 0;
+  }
 
-  /* Floor plan: each room is a help topic */
-  .plan-title { margin: 2rem 0 .8rem; font: 800 1.15rem/1.3 var(--round); }
+  .plan-title { margin: 0 0 1rem; font: 950 clamp(1.5rem, 3vw, 2.4rem)/1 var(--display); text-transform: uppercase; }
   .plan {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: 1.25fr 1fr 1fr;
     grid-template-areas:
       "home  signin plus"
       "home  data   sync"
       "hall  hall   hall";
-    border: 4px solid var(--wall);
-    border-radius: 14px;
-    overflow: hidden;
+    border-top: var(--rule) solid var(--ink);
+    border-left: var(--rule) solid var(--ink);
     background: var(--paper);
+    box-shadow: 9px 9px 0 var(--shadow);
   }
   .room {
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap: .25rem;
+    gap: .32rem;
     min-height: 8.5rem;
-    padding: 1rem 1.1rem;
+    padding: 1.25rem;
     color: var(--ink);
     text-decoration: none;
-    border-right: 2px solid var(--wall);
-    border-bottom: 2px solid var(--wall);
-    transition: background-color .15s ease;
+    border-right: var(--rule) solid var(--ink);
+    border-bottom: var(--rule) solid var(--ink);
+    transition: transform .12s ease, background-color .12s ease;
   }
-  .room:hover { background: var(--tint); }
-  .room:focus-visible { outline: 3px solid var(--orange); outline-offset: -6px; border-radius: 10px; }
-  /* A doorway: a gap cut into the wall at the top-left of every room */
-  .room::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: 1.1rem;
-    width: 2.2rem;
-    height: 2px;
-    background: var(--paper);
-  }
-  .room .tag { font: 700 .66rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-  .room strong { font: 800 1.15rem/1.2 var(--round); }
+  .room:hover { background: var(--accent); color: var(--accent-ink); transform: translate(-3px, -3px); }
+  .room:hover .tag, .room:hover .hint { color: var(--accent-ink); }
+  .room:focus-visible { outline-offset: -7px; }
+  .room .tag { font: 800 .68rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .room strong { font: 950 1.18rem/1.05 var(--display); text-transform: uppercase; }
   .room span.hint { font-size: .88rem; color: var(--muted); line-height: 1.35; }
   .r-home { grid-area: home; min-height: 17rem; }
-  .r-home strong { font-size: 1.5rem; }
+  .r-home strong { font-size: clamp(1.5rem, 3vw, 2.4rem); max-width: 11ch; }
   .r-signin { grid-area: signin; }
-  .r-plus { grid-area: plus; border-right: 0; }
+  .r-plus { grid-area: plus; }
   .r-data { grid-area: data; }
-  .r-sync { grid-area: sync; border-right: 0; }
-  .r-hall { grid-area: hall; min-height: 5rem; border-right: 0; border-bottom: 0; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-  .r-hall strong::after { content: " \2192"; color: var(--heat); }
-  .r-plus .tag { color: var(--purple); }
+  .r-sync { grid-area: sync; }
+  .r-hall { grid-area: hall; min-height: 5.5rem; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  .r-hall strong::after { content: " \2192"; }
 
-  @media (max-width: 40rem) {
-    .plan {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-        "home   home"
-        "signin plus"
-        "data   sync"
-        "hall   hall";
-    }
-    .r-home { min-height: 9rem; border-right: 0; }
-    .r-plus, .r-sync { border-right: 0; }
-    .r-signin, .r-data { border-right: 2px solid var(--wall); }
-    .room { min-height: 7.5rem; }
-  }
-
-  /* Screenshots */
-  .gallery-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin: 3rem 0 .9rem; }
-  .gallery-head h2 { margin: 0; font: 800 1.15rem/1.3 var(--round); }
-  .gallery-head p { margin: 0; font-size: .88rem; color: var(--muted); }
+  .gallery-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin: clamp(4rem, 9vw, 7rem) 0 1rem; }
+  .gallery-head h2 { margin: 0; font: 950 clamp(1.8rem, 4vw, 3.3rem)/.95 var(--display); text-transform: uppercase; }
+  .gallery-head p { margin: 0; font: 700 .8rem/1.2 var(--mono); color: var(--muted); }
   .gallery {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(10.5rem, 13.5rem);
-    gap: .9rem;
+    grid-auto-columns: minmax(12rem, 15rem);
+    gap: 1.4rem;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding: .3rem .2rem 1rem;
-    margin: 0 -.2rem;
+    padding: .4rem .65rem 2.5rem .2rem;
+    margin-right: calc(clamp(1rem, 3vw, 2rem) * -1);
   }
   .gallery figure { margin: 0; scroll-snap-align: start; }
+  .gallery figure:nth-child(even) { margin-top: 2.4rem; }
   .gallery img {
     width: 100%;
     height: auto;
     aspect-ratio: 921 / 2000;
     object-fit: cover;
-    border-radius: 16px;
-    border: 3px solid var(--wall);
+    border: var(--rule) solid var(--ink);
     background: var(--paper);
+    box-shadow: 7px 7px 0 var(--shadow);
   }
-  .gallery figcaption { font-size: .82rem; color: var(--muted); margin-top: .5rem; line-height: 1.35; }
+  .gallery figcaption { margin-top: .85rem; padding-right: .5rem; font: 700 .78rem/1.35 var(--mono); color: var(--muted); }
 
-  /* Answers */
-  main section { scroll-margin-top: 1rem; margin-top: 3.2rem; }
-  main h2 {
-    font: 900 clamp(1.5rem, 4.5vw, 2.1rem)/1.1 var(--round);
-    letter-spacing: -.01em;
-    margin: 0 0 1rem;
+  main { margin-top: clamp(4rem, 9vw, 8rem); }
+  main section:not(.contact) {
+    scroll-margin-top: 1rem;
+    display: grid;
+    grid-template-columns: minmax(13rem, .7fr) minmax(0, 1.5fr);
+    column-gap: clamp(2rem, 7vw, 6rem);
+    padding: clamp(2.5rem, 6vw, 5rem) 0;
+    border-top: 5px solid var(--ink);
   }
-  .cards { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
+  .section-kicker {
+    grid-column: 1;
+    align-self: start;
+    width: max-content;
+    max-width: 100%;
+    margin: 0 0 .8rem;
+    padding: .28rem .48rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 2px solid var(--ink);
+    font: 800 .76rem/1.2 var(--mono);
+  }
+  main section:not(.contact) > h2 {
+    grid-column: 1;
+    align-self: start;
+    margin: 0;
+    font: 950 clamp(1.8rem, 4vw, 3.4rem)/.94 var(--display);
+    letter-spacing: -.04em;
+    text-transform: uppercase;
+  }
+  .cards { grid-column: 2; grid-row: 1 / span 3; display: grid; align-content: start; }
   .card {
-    background: var(--paper);
-    border: 2px solid color-mix(in srgb, var(--wall) 18%, transparent);
-    border-radius: 14px;
-    padding: 1rem 1.1rem;
+    padding: 1.2rem 0 1.4rem;
+    border-bottom: 2px solid var(--ink);
   }
-  .card h3 { font: 800 1.02rem/1.3 var(--round); margin: 0 0 .4rem; }
-  .card p, .card ul { margin: .35rem 0 0; }
-  .card ul { padding-left: 1.1rem; }
-  .card li { margin: .2rem 0; }
+  .card:first-child { padding-top: 0; }
+  .card h3 { max-width: 32ch; margin: 0 0 .45rem; font: 900 clamp(1.05rem, 2vw, 1.3rem)/1.2 var(--display); }
+  .card p, .card ul { max-width: 64ch; margin: .4rem 0 0; }
+  .card ul { padding-left: 1.3rem; }
+  .card li { margin: .35rem 0; }
+  .card li::marker { color: var(--accent); font-size: 1.2em; }
+  .card a { font-weight: 800; text-decoration-color: var(--accent); }
   .path { font-weight: 700; white-space: nowrap; }
   .note {
-    border-left: 4px solid var(--coral);
-    background: color-mix(in srgb, var(--coral) 10%, var(--paper));
+    margin-top: 1rem;
+    padding: 1.2rem;
+    border: var(--rule) solid var(--ink);
+    background: var(--accent);
+    color: var(--accent-ink);
+    box-shadow: 6px 6px 0 var(--shadow);
   }
   .code { font: 700 .95em var(--mono); letter-spacing: .04em; }
 
   .contact {
-    margin-top: 3.2rem;
-    background: var(--orange);
-    color: var(--navy);
-    border-radius: 18px;
-    padding: 1.6rem 1.3rem;
+    scroll-margin-top: 1rem;
+    margin-top: clamp(3rem, 7vw, 6rem);
+    padding: clamp(1.5rem, 5vw, 4rem);
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 5px solid var(--ink);
+    box-shadow: 11px 11px 0 var(--shadow);
   }
-  .contact h2 { margin-bottom: .5rem; }
-  .contact a { color: var(--navy); font-weight: 800; }
-  .contact .eyebrow { color: var(--navy); opacity: .75; }
-  .contact .mail { font: 900 clamp(1.15rem, 4.2vw, 1.6rem)/1.2 var(--round); word-break: break-word; }
+  .contact .section-kicker { margin-bottom: 1rem; background: var(--paper); color: var(--ink); }
+  .contact h2 { max-width: 13ch; margin: 0 0 1rem; font: 950 clamp(2.3rem, 6vw, 5.3rem)/.9 var(--display); letter-spacing: -.055em; text-transform: uppercase; }
+  .contact a { font-weight: 950; }
+  .contact .mail { margin: 1.4rem 0; font: 900 clamp(1rem, 3.5vw, 2.35rem)/1.15 var(--mono); word-break: break-word; }
+  .contact > p:last-child { max-width: 52ch; margin-bottom: 0; font-weight: 650; }
 
-  footer { margin: 3rem 0 2.5rem; font-size: .88rem; color: var(--muted); }
-  footer p { margin: .3rem 0; }
+  footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem 2rem;
+    margin: 4rem 0 2.5rem;
+    padding-top: 1.3rem;
+    border-top: var(--rule) solid var(--ink);
+    font: 700 .78rem/1.5 var(--mono);
+    color: var(--muted);
+  }
+  footer p { margin: 0; }
+  .footer-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  footer a { color: var(--ink); }
+
+  @media (max-width: 48rem) {
+    .site-bar { min-height: 4rem; }
+    .site-bar a:last-child { box-shadow: 3px 3px 0 var(--shadow); }
+    .hero { min-height: auto; grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 0 4.5rem; }
+    h1 { font-size: clamp(3.1rem, 15vw, 5.5rem); }
+    .hero-media { width: min(78vw, 24rem); margin-left: auto; transform: rotate(1.5deg); }
+    .hero-media img { height: min(68vh, 30rem); }
+    .plan { grid-template-columns: 1fr 1fr; grid-template-areas: "home home" "signin plus" "data sync" "hall hall"; }
+    .r-home { min-height: 10rem; }
+    .room { min-height: 8rem; }
+    .gallery figure:nth-child(even) { margin-top: 1.4rem; }
+    main section:not(.contact) { grid-template-columns: 1fr; row-gap: .8rem; }
+    main section:not(.contact) > h2, .section-kicker, .cards { grid-column: 1; }
+    .cards { grid-row: auto; margin-top: 1.2rem; }
+    footer { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 32rem) {
+    .site-bar a:last-child { padding: .6rem; font-size: .72rem; }
+    .plan { display: block; }
+    .room, .r-home, .r-hall { min-height: auto; padding: 1.15rem; }
+    .r-hall { align-items: flex-start; }
+    .gallery { grid-auto-columns: minmax(11rem, 67vw); }
+    .path { white-space: normal; }
+    .contact { border-width: var(--rule); box-shadow: 7px 7px 0 var(--shadow); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: .01ms !important; }
+  }
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#help-index">Skip to help topics</a>
 <div class="wrap">
-<header>
-  <p class="eyebrow">EmberHome / Help desk</p>
-  <h1>Help for your <em>whole home.</em></h1>
-  <p class="lede">EmberHome keeps one chore list and one shopping list for the people you live with. Pick the part of the app you need help with, or write to us at the bottom of the page.</p>
+<nav class="site-bar" aria-label="Page navigation">
+  <a href="#top">EMBERHOME</a>
+  <a href="#contact">EMAIL SUPPORT</a>
+</nav>
+
+<header id="top" class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Help desk</p>
+    <h1>Help for your <em>whole home.</em></h1>
+    <p class="lede">One place for help with your household, sign-in, shared lists, Ember Plus and your data.</p>
+  </div>
+  <figure class="hero-media">
+    <img src="emberhome/teamwork.webp" width="921" height="2000" fetchpriority="high" alt="Two housemates washing and drying dishes together in EmberHome artwork.">
+  </figure>
 </header>
 
-<nav aria-label="Help topics">
+<nav id="help-index" aria-label="Help topics">
   <p class="plan-title">Where is the problem?</p>
   <div class="plan">
     <a class="room r-home" href="#household">
@@ -256,13 +362,9 @@
 
 <div class="gallery-head">
   <h2>A look inside</h2>
-  <p>Swipe for more</p>
+  <p>Drag or swipe</p>
 </div>
 <div class="gallery" tabindex="0" aria-label="EmberHome screenshots">
-  <figure>
-    <img src="emberhome/teamwork.webp" width="921" height="2000" loading="lazy" alt="Two housemates washing and drying dishes together, with the line: Not just chores. It's teamwork.">
-    <figcaption>Made for the people you live with.</figcaption>
-  </figure>
   <figure>
     <img src="emberhome/home.webp" width="921" height="2000" loading="lazy" alt="The Home screen: a home pulse score and a floor plan of rooms that need attention.">
     <figcaption>Home shows every room and what it needs.</figcaption>
@@ -284,7 +386,7 @@
 <main>
 
 <section id="how">
-  <p class="eyebrow">The basics</p>
+  <p class="section-kicker">The basics</p>
   <h2>How EmberHome works</h2>
   <div class="cards">
     <div class="card">
@@ -306,7 +408,7 @@
 </section>
 
 <section id="household">
-  <p class="eyebrow">Living room</p>
+  <p class="section-kicker">Living room</p>
   <h2>Your home and invites</h2>
   <div class="cards">
     <div class="card">
@@ -315,7 +417,7 @@
     </div>
     <div class="card">
       <h3>Invite people</h3>
-      <p>Owners and admins share an invite code from <span class="path">Profile &gt; The household</span>. It looks like <span class="code">EH-XXXX-XXXX</span>, works for seven days and for up to twelve people. Creating a new code cancels the old one.</p>
+      <p>Owners and admins share an invite code from <span class="path">Profile &gt; The household</span>. It looks like <span class="code">EH-XXXX-XXXX</span>, works for seven days and can be redeemed up to twelve times. Creating a new code cancels the old one.</p>
     </div>
     <div class="card">
       <h3>Join a home</h3>
@@ -333,7 +435,7 @@
 </section>
 
 <section id="signin">
-  <p class="eyebrow">Front door</p>
+  <p class="section-kicker">Front door</p>
   <h2>Sign-in</h2>
   <div class="cards">
     <div class="card">
@@ -352,7 +454,7 @@
 </section>
 
 <section id="plus">
-  <p class="eyebrow">Extra room</p>
+  <p class="section-kicker">Extra room</p>
   <h2>Ember Plus</h2>
   <div class="cards">
     <div class="card">
@@ -383,7 +485,7 @@
 </section>
 
 <section id="data">
-  <p class="eyebrow">Study</p>
+  <p class="section-kicker">Study</p>
   <h2>Your data and deleting your account</h2>
   <div class="cards">
     <div class="card">
@@ -406,7 +508,7 @@
 </section>
 
 <section id="sync">
-  <p class="eyebrow">Hallway</p>
+  <p class="section-kicker">Hallway</p>
   <h2>Syncing</h2>
   <div class="cards">
     <div class="card">
@@ -417,7 +519,7 @@
 </section>
 
 <section id="contact" class="contact">
-  <p class="eyebrow">Mailbox</p>
+  <p class="section-kicker">Mailbox</p>
   <h2>Still stuck? Write to us</h2>
   <p class="mail"><a href="mailto:ismailturanli91@gmail.com?subject=EmberHome%20support">ismailturanli91@gmail.com</a></p>
   <p>Include your iPhone model, iOS version and the EmberHome version shown at the bottom of the Profile tab. Never send your password.</p>
@@ -426,7 +528,7 @@
 </main>
 
 <footer>
-  <p><a href="emberhome.html">Privacy Policy</a> · <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use (Apple standard EULA)</a></p>
+  <p class="footer-links"><a href="emberhome.html">Privacy Policy</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use (Apple standard EULA)</a></p>
   <p>EmberHome is published by TuranliApp. Last updated: September 23, 2026.</p>
 </footer>
 </div>
