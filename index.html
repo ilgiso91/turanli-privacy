@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Privacy Policy - TuranliApp</h1>
-<p>Last Updated: September 7, 2026</p>
+<p>Last Updated: September 29, 2026</p>
 <p>At TuranliApp, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and protect your information when you use any mobile application published by us (each, an "App"). It applies to all our Apps, whether currently available or released in the future, including AI-powered image and video generation apps, AI-powered keyboard apps, AI-powered health, fitness, and nutrition tracking apps, and other AI-based productivity and entertainment tools. This Privacy Policy is part of our Terms of Use.</p>
 <p>Not all sections apply to every App: sections describing a specific feature type (such as photo processing, keyboard functionality, or health and fitness tracking) apply only to Apps that include that feature. Each App's features are described on its App Store product page.</p>
 <p>By downloading, installing, or using an App, you acknowledge that you have read, understood, and agree to this Privacy Policy.</p>
@@ -138,13 +138,20 @@
 <p>Information such as your height, weight, age, sex, activity level, goal, weight history, and calculated BMI is used solely to calculate your calorie and macro targets and to show your progress over time within the App. This data is stored on your device and, where the App provides account sync, in our secure backend under your account.</p>
 <h3>2B.4 Step Counting and Walk Tracking</h3>
 <ul>
-<li><strong>Step counting</strong> uses your device's built-in motion/pedometer sensors, not Apple HealthKit. Step data is processed and stored on your device to show your daily activity.</li>
-<li><strong>GPS walk tracking</strong> uses your device's location services only while you have an active walk session running, to record your route, distance, and duration. You can deny or revoke location permission at any time in iOS Settings, in which case walk-route tracking will be unavailable but the rest of the App continues to work.</li>
+<li><strong>Step counting</strong> uses your device's built-in motion/pedometer sensors. If you connect Apple Health (see Section 2B.7), steps can also be read from Apple Health. Step data is processed and stored on your device to show your daily activity.</li>
+<li><strong>GPS walk tracking</strong> uses your device's location services only while a walk you started is recording, to record your route, distance, and duration. In CalorieOwl, recording continues in the background while the screen is locked, until you finish the walk; the App uses "While Using the App" location permission only, and iOS shows the location indicator while it runs. The route is kept only on your device while the walk records and is deleted when you finish; only the walk's summary (distance, duration, and estimated calories) is saved to your log. The route is never uploaded. You can deny or revoke location permission at any time in iOS Settings, in which case walk-route tracking will be unavailable but the rest of the App continues to work.</li>
 </ul>
 <h3>2B.5 No Use of Health Data for Advertising</h3>
 <p><strong>We do not use, sell, or share your health, fitness, nutrition, weight, or location data for advertising or ad-targeting purposes, and we do not disclose it to data brokers.</strong> Any advertising attribution tools we use (see Section 4.6) measure ad-campaign effectiveness only and do not receive this data.</p>
 <h3>2B.6 Data Export</h3>
 <p>Where offered, you can export your log (including food, weight, water, fasting, and step history) as a PDF or data file directly from the App, for your own records or to share with a healthcare professional such as a dietitian or doctor.</p>
+<h3>2B.7 Apple Health (HealthKit)</h3>
+<ul>
+<li>Connecting to Apple Health is optional and stays off until you turn it on (in CalorieOwl: Profile &gt; Apple Health). You choose which data types to allow on Apple's permission screen and can change this at any time in the Health app or in iOS Settings.</li>
+<li><strong>What we write:</strong> the meals you log (energy and nutrients such as protein, carbohydrates, fat, fiber, sugar, and sodium), water, and weight.</li>
+<li><strong>What we read:</strong> weight, steps, and active energy, shown in the App next to your diary.</li>
+<li>Data read from or written to Apple Health stays on your device. It is not uploaded to our servers, <strong>never sent to OpenAI or any other AI provider</strong>, never shared with third parties, and never used for advertising, marketing, or data mining.</li>
+</ul>
 <h2>3. HOW WE USE YOUR INFORMATION</h2>
 <p>We use the collected information for the following purposes:</p>
 <h3>3.1 Service Provision</h3>
@@ -181,7 +188,7 @@
 <ul>
 <li><strong>Image and video generation:</strong> Photos and videos you upload in Apps with image/video generation features are currently processed through Replicate's API (including the Gemini AI model) and, for certain features, open-source models from Stability AI. Replicate processes content according to strict data processing agreements and does not retain uploaded content after processing is complete. Learn more at <a href="https://replicate.com/privacy">https://replicate.com/privacy</a></li>
 <li><strong>AI text features:</strong> Text you explicitly submit to AI actions in Apps with AI writing or keyboard features is currently processed by OpenAI's API, accessed through a secure proxy layer. Content submitted via OpenAI's API is not used to train OpenAI's models. Learn more at <a href="https://openai.com/policies/api-data-usage-policies">https://openai.com/policies/api-data-usage-policies</a></li>
-<li><strong>Food recognition and AI coach:</strong> In Apps with AI food-photo scanning or an AI coach feature (such as CalorieOwl), food photos and your questions to the AI coach are currently processed via OpenAI's API. Content is transmitted over an encrypted connection solely to generate your requested output (food identification, nutrition estimate, or coach response) and is not used by OpenAI to train their models. Learn more at <a href="https://openai.com/policies/api-data-usage-policies">https://openai.com/policies/api-data-usage-policies</a></li>
+<li><strong>Food recognition and AI coach:</strong> In Apps with AI food-photo scanning or an AI coach feature (such as CalorieOwl), food and menu photos, meal descriptions you type or dictate, and your messages to the AI coach are currently processed via OpenAI's API. Content is transmitted over an encrypted connection solely to generate your requested output (food identification, nutrition estimate, or coach response) and is not used by OpenAI to train their models. Learn more at <a href="https://openai.com/policies/api-data-usage-policies">https://openai.com/policies/api-data-usage-policies</a></li>
 </ul>
 <h3>4.2 Payment Processing</h3>
 <ul>
@@ -194,7 +201,7 @@
 </ul>
 <h3>4.4 Analytics and Performance</h3>
 <ul>
-<li><strong>Firebase Analytics:</strong> We use Google Firebase to collect app usage statistics, crash reports, and performance data. This helps us improve the App's stability and user experience. Firebase collects anonymized usage data. Learn more at <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a></li>
+<li><strong>Google Analytics for Firebase:</strong> We use Google Analytics for Firebase to understand how the App is used — for example, which screens are opened, whether onboarding is completed, and purchase events. It collects an app-instance identifier, these in-app events, and an approximate location derived from your IP address. It does not use the advertising identifier (IDFA), advertising personalization is turned off, and the data is not used to track you across other companies' apps or websites. In CalorieOwl, your onboarding and health answers, your food log, and your Apple Health data are never sent to analytics. Learn more at <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a></li>
 <li><strong>Firebase Crashlytics:</strong> We use Crashlytics to monitor app crashes and technical errors, helping us identify and fix issues quickly.</li>
 </ul>
 <p>Analytics run in the main App. In Apps that include a keyboard, the keyboard extension itself does not run analytics on your typing; as stated in Section 2A, keystrokes are never collected.</p>
@@ -204,6 +211,7 @@
 </ul>
 <h3>4.6 Advertising and Attribution</h3>
 <p>Where enabled, we use advertising attribution tools (such as Google Ads' on-device conversion measurement) solely to measure which ad campaigns led to an App install or subscription, subject to your App Tracking Transparency permission. These tools receive install and conversion events only — they do not receive your food, weight, health, fitness, or location data.</p>
+<p>In CalorieOwl, we use Apple's AdServices framework, through RevenueCat, to see whether an install came from an Apple Search Ads campaign. This does not use the advertising identifier and does not require tracking permission, and it receives no food, weight, health, fitness, or location data.</p>
 <h3>4.7 Data Sharing Limitations</h3>
 <p><strong>We do not sell your personal information.</strong> We only share your information:</p>
 <ul>
@@ -240,7 +248,7 @@
 <li>Anonymized and aggregated data may be retained indefinitely for analytics and research purposes.</li>
 </ul>
 <h3>5.6 Health, Fitness, and Nutrition Data</h3>
-<p>Food log entries (including photos), weight history, water logs, fasting history, step counts, and walk routes are stored locally on your device for as long as you keep them in the App, and, where the App provides account sync, on our secure servers under your account. You can delete individual entries or your entire history at any time in the App. Deleting the App removes the locally stored copies from your device; if you use account sync, contact us at <a href="mailto:ismailturanli91@gmail.com">ismailturanli91@gmail.com</a> to request deletion of any server-side copies.</p>
+<p>Food log entries (including photos), weight history, water logs, fasting history, step counts, and walk summaries (a walk's route is deleted when the walk ends) are stored locally on your device for as long as you keep them in the App, and, where the App provides account sync, on our secure servers under your account. You can delete individual entries or your entire history at any time in the App. Deleting the App removes the locally stored copies from your device; if you use account sync, contact us at <a href="mailto:ismailturanli91@gmail.com">ismailturanli91@gmail.com</a> to request deletion of any server-side copies.</p>
 <h2>6. YOUR RIGHTS AND CHOICES</h2>
 <h3>6.1 Access and Control</h3>
 <ul>
