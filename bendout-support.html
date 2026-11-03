@@ -1,70 +1,407 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
 <head>
-<title>Support - Bendout</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Help and contact for Bendout, an arrow puzzle game for iOS published by TuranliApp.">
-<style>
-  :root { --ink:#1C2140; --accent:#3F55C9; --line:#DADDEB; --bg:#FAFAFD; --soft:#EEF0F8; --muted:#5E6380; }
-  body { max-width: 46rem; margin: 0 auto; padding: 2rem 1.25rem 5rem;
-         font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-         color: var(--ink); background: var(--bg); }
-  h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 .4rem; }
-  h2 { font-size: 1.2rem; margin: 2.4rem 0 .7rem; padding-top: 1.1rem; border-top: 1px solid var(--line); }
-  .updated { color: var(--muted); margin: 0 0 2rem; font-size: .92rem; }
-  .box { background: var(--soft); padding: .9rem 1.1rem; border-radius: 6px; margin: 1.5rem 0; }
-  a { color: var(--accent); }
-  footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--line); font-size: .9rem; color: var(--muted); }
-  @media (prefers-color-scheme: dark) {
-    :root { --ink:#E6E8F5; --accent:#9DAEFF; --line:#353B5E; --bg:#1A1F38; --soft:#242A4A; --muted:#AEB3CF; }
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Official support for Bendout: Arrow Puzzle on iPhone and iPhone Duo. Find help with gameplay, progress, purchases, ads and iCloud backup.">
+  <meta name="theme-color" content="#090d1b">
+  <title>Bendout Support</title>
+  <link rel="icon" type="image/png" href="bendout-support-assets/favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1020;
+      --panel: #141b2e;
+      --ink: #f6f6f3;
+      --muted: #9ca4ba;
+      --line: rgba(211, 222, 255, .13);
+      --accent: #ff7589;
+      --accent-2: #7582ff;
+      --header: rgba(11, 16, 32, .94);
+      --button-ink: #090d1b;
+      --frame: #192237;
+      --matte: #101729;
+      --frame-edge: rgba(224, 233, 255, .2);
+      --frame-highlight: rgba(240, 245, 255, .08);
+      --frame-shadow: 0 24px 64px rgba(3, 7, 19, .24);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f4f5f8;
+      --panel: #ffffff;
+      --ink: #121528;
+      --muted: #62697b;
+      --line: rgba(25, 31, 58, .14);
+      --accent: #bc3450;
+      --accent-2: #4f5edf;
+      --header: rgba(244, 245, 248, .9);
+      --button-ink: #ffffff;
+      --frame: #ffffff;
+      --matte: #e9edf5;
+      --frame-edge: rgba(40, 52, 83, .19);
+      --frame-highlight: rgba(255, 255, 255, .95);
+      --frame-shadow: 0 24px 64px rgba(41, 53, 89, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.58 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; }
+    :focus-visible { outline: 3px solid var(--accent-2); outline-offset: 4px; }
+    [id] { scroll-margin-top: 6rem; }
+
+    .wrap { width: min(1160px, calc(100% - 4rem)); margin-inline: auto; }
+    .skip { position: fixed; top: -5rem; left: 1rem; z-index: 100; padding: .65rem .9rem; background: var(--ink); color: var(--bg); text-decoration: none; }
+    .skip:focus { top: 1rem; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: var(--header);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .nav { min-height: 5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .brand { display: flex; align-items: center; gap: .8rem; text-decoration: none; font-weight: 760; letter-spacing: .01em; }
+    .brand img { width: 2.45rem; height: 2.45rem; border-radius: .65rem; }
+    .brand span span { display: block; margin-top: -.15rem; color: var(--muted); font-size: .67rem; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .nav-right a { color: var(--muted); font-size: .88rem; font-weight: 650; text-decoration: none; }
+    .nav-right a:hover { color: var(--ink); }
+    .theme {
+      width: 2.75rem;
+      height: 2.75rem;
+      border: 1px solid var(--line);
+      border-radius: .65rem;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1.05rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      gap: clamp(2rem, 4.5vw, 4.5rem);
+      align-items: center;
+      padding-block: 4.5rem;
+    }
+    .hero-copy { max-width: 29rem; }
+    .label { margin: 0 0 1rem; color: var(--accent); font-size: .74rem; font-weight: 780; letter-spacing: .16em; text-transform: uppercase; }
+    h1, h2, h3 { margin: 0; text-wrap: balance; }
+    h1 { max-width: 10ch; font-size: clamp(3.25rem, 5.2vw, 4.65rem); line-height: 1.02; letter-spacing: -.055em; font-weight: 720; }
+    .hero-copy > p:not(.label) { max-width: 32rem; margin: 1.5rem 0 0; color: var(--muted); font-size: 1.06rem; line-height: 1.75; }
+    .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+    .btn { display: inline-flex; min-height: 3rem; align-items: center; justify-content: center; gap: .65rem; padding: .72rem 1rem; border: 1px solid var(--ink); border-radius: .7rem; background: var(--ink); color: var(--button-ink); font-size: .88rem; font-weight: 720; text-decoration: none; white-space: nowrap; transition: transform .18s ease, opacity .18s ease; }
+    .btn:hover { opacity: .86; }
+    .btn:active { transform: scale(.98); }
+    .btn.alt { border-color: var(--line); background: transparent; color: var(--ink); }
+
+    .showcase {
+      margin: 0;
+      min-width: 0;
+      border: 1px solid var(--frame-edge);
+      border-radius: 1.5rem;
+      background: var(--frame);
+      box-shadow: inset 0 1px 0 var(--frame-highlight), var(--frame-shadow);
+      overflow: hidden;
+    }
+    .showcase-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.4rem; border-bottom: 1px solid var(--line); font-size: .78rem; font-weight: 650; }
+    .showcase-head span:last-child { color: var(--muted); font-size: .7rem; font-weight: 500; }
+    .showcase-stage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; padding: 1.4rem; background: var(--matte); }
+    .showcase-poster { min-width: 0; width: 100%; max-width: 13.25rem; justify-self: center; border: 1px solid rgba(215, 226, 255, .12); border-radius: .5rem; overflow: hidden; background: #151b2c; box-shadow: 0 8px 20px rgba(4, 9, 25, .13); }
+    .showcase-poster img { width: 100%; height: auto; aspect-ratio: 720 / 1565; object-fit: contain; }
+    .showcase-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 4.25rem; padding: .85rem 1.4rem; border-top: 1px solid var(--line); }
+    .showcase-caption { min-width: 0; }
+    .showcase-caption strong { display: block; font-size: .81rem; font-weight: 650; }
+    .showcase-caption span { display: block; margin-top: .15rem; color: var(--muted); font-size: .69rem; }
+    .gallery-controls { display: flex; align-items: center; gap: .4rem; flex-shrink: 0; }
+    .gallery-controls button { width: 2.75rem; height: 2.75rem; border: 1px solid var(--frame-edge); border-radius: .65rem; background: transparent; color: var(--ink); cursor: pointer; transition: background .15s, transform .15s; }
+    .gallery-controls button:hover { background: var(--matte); }
+    .gallery-controls button:active { transform: scale(.96); }
+    .gallery-controls button:disabled { opacity: .28; cursor: default; }
+    .hero-note { display: flex; gap: .6rem; margin-top: 1.5rem; color: var(--muted); font-size: .75rem; }
+    .hero-note span + span::before { content: "/"; margin-right: .6rem; opacity: .5; }
+
+    .quick {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .quick a { position: relative; min-height: 6.5rem; display: flex; flex-direction: column; justify-content: center; gap: .55rem; padding: 1.2rem 2rem 1.2rem 1.4rem; border-right: 1px solid var(--line); text-decoration: none; transition: background .15s ease; }
+    .quick a:first-child { padding-left: 0; }
+    .quick a:last-child { border-right: 0; }
+    .quick a:hover { background: var(--panel); }
+    .quick span { color: var(--muted); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .quick strong { font-size: .88rem; line-height: 1.4; font-weight: 620; }
+    .quick b { position: absolute; right: .8rem; top: 2.8rem; color: var(--muted); font-size: .95rem; font-weight: 500; }
+
+    section { padding-block: clamp(3.5rem, 6.5vw, 6rem); }
+    .split { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+    .section-intro { grid-column: 1 / span 4; }
+    .section-intro h2 { max-width: 14ch; font-size: clamp(1.9rem, 3vw, 2.65rem); line-height: 1.12; letter-spacing: -.04em; font-weight: 650; }
+    .section-intro p:last-child { max-width: 22rem; margin: 1.2rem 0 0; color: var(--muted); }
+    .rows { grid-column: 6 / -1; border-top: 1px solid var(--line); }
+    .row { display: grid; grid-template-columns: 2rem 1fr; gap: 1rem; padding: 1.65rem 0; border-bottom: 1px solid var(--line); }
+    .row-num { color: var(--accent); font-size: .75rem; font-weight: 750; letter-spacing: .08em; }
+    .row h3 { font-size: 1.08rem; letter-spacing: -.02em; font-weight: 650; }
+    .row p { margin: .55rem 0 0; color: var(--muted); }
+
+    .numbers { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 3.5rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .number { padding: 1.8rem 1.3rem; border-right: 1px solid var(--line); }
+    .number:first-child { padding-left: 0; }
+    .number:last-child { border-right: 0; }
+    .number strong { display: block; font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1; letter-spacing: -.05em; font-weight: 550; }
+    .number span { display: block; margin-top: .75rem; color: var(--muted); font-size: .82rem; }
+
+    .faq-wrap { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+    .faq-title { grid-column: 1 / span 4; }
+    .faq-title h2 { max-width: 14ch; font-size: clamp(1.9rem, 3vw, 2.65rem); line-height: 1.12; letter-spacing: -.04em; font-weight: 650; }
+    .faq-title p:last-child { max-width: 20rem; margin: 1.2rem 0 0; color: var(--muted); }
+    .faq-list { grid-column: 6 / -1; border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary { position: relative; padding: 1.45rem 3rem 1.45rem 0; cursor: pointer; list-style: none; font-weight: 720; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; top: 1.12rem; right: .2rem; color: var(--accent); font-size: 1.55rem; font-weight: 400; transition: transform .18s ease; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { max-width: 41rem; margin: -.2rem 3rem 1.5rem 0; color: var(--muted); }
+    details a { color: var(--ink); text-underline-offset: .2em; }
+
+    .contact { padding: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .contact-inner { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; align-items: end; padding-block: clamp(4rem, 8vw, 7rem); }
+    .contact-copy { grid-column: 1 / span 7; }
+    .contact-copy h2 { max-width: 17ch; font-size: clamp(2rem, 3.4vw, 3.1rem); line-height: 1.08; letter-spacing: -.045em; font-weight: 650; }
+    .contact-copy > p:last-of-type { max-width: 38rem; margin: 1.3rem 0 0; color: var(--muted); }
+    .contact-action { grid-column: 9 / -1; min-width: 0; }
+    .contact-action .btn { width: 100%; }
+    .contact-action p { margin: .8rem 0 0; color: var(--muted); font-size: .76rem; }
+
+    footer { padding-block: 2rem 3.5rem; }
+    .foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: .8rem; }
+    .foot nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .foot a { color: var(--muted); text-underline-offset: .2em; }
+
+    @media (max-width: 1023px) {
+      .wrap { width: min(100% - 2rem, 1180px); }
+      .nav-right a:not(:last-of-type) { display: none; }
+      .hero { grid-template-columns: minmax(0, .84fr) minmax(0, 1.16fr); gap: 2rem; padding-block: 3.5rem; }
+      h1 { font-size: 3.25rem; }
+      .showcase-stage { padding: 1.1rem; gap: .75rem; }
+      .showcase-head, .showcase-foot { padding-inline: 1.1rem; }
+      .showcase-poster.secondary { display: none; }
+      .showcase-stage { grid-template-columns: 1fr; }
+      .showcase-poster { max-width: 13.25rem; }
+      .quick { grid-template-columns: repeat(2, 1fr); }
+      .quick a:nth-child(2) { border-right: 0; }
+      .quick a:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .section-intro, .rows, .faq-title, .faq-list { grid-column: 1 / -1; }
+      .rows, .faq-list { margin-top: 2rem; }
+      .numbers { grid-template-columns: repeat(2, 1fr); }
+      .number:nth-child(2) { border-right: 0; }
+      .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .contact-copy { grid-column: 1 / span 7; }
+      .contact-action { grid-column: 8 / -1; }
+    }
+
+    @media (max-width: 767px) {
+      .hero { grid-template-columns: 1fr; gap: 2.25rem; padding-block: 3rem; }
+      .hero-copy { max-width: 34rem; }
+      h1 { max-width: 12ch; font-size: clamp(2.85rem, 10.5vw, 4rem); }
+      .showcase { width: 100%; max-width: 35rem; justify-self: center; }
+      .showcase-stage { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 1.25rem; }
+      .showcase-poster.secondary { display: block; }
+      .section-intro, .rows, .faq-title, .faq-list { grid-column: 1 / -1; }
+      .contact-copy, .contact-action { grid-column: 1 / -1; }
+      .contact-action { width: min(100%, 22rem); margin-top: 1rem; }
+      .foot { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 479px) {
+      .wrap { width: calc(100% - 2.5rem); }
+      .nav { min-height: 4.5rem; }
+      .brand { gap: .6rem; }
+      .brand img { width: 2.2rem; height: 2.2rem; }
+      .nav-right a { display: none; }
+      .actions { gap: .5rem; }
+      .btn { padding-inline: .85rem; font-size: .82rem; }
+      .showcase { border-radius: 1.25rem; }
+      .showcase-head { padding: .9rem 1rem; }
+      .showcase-stage { grid-template-columns: 1fr; padding: 1.15rem; }
+      .showcase-poster { max-width: 12.5rem; }
+      .showcase-poster.secondary { display: none; }
+      .showcase-foot { padding: .85rem 1rem; gap: .5rem; }
+      .showcase-caption strong { font-size: .75rem; }
+      .quick { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .quick a { min-height: 6.5rem; padding: 1rem .75rem; }
+      .quick a:first-child { padding-left: .75rem; }
+      .quick a:nth-child(3) { border-right: 1px solid var(--line); }
+      .quick a:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .quick b { display: none; }
+      .quick span { font-size: .65rem; }
+      .quick strong { font-size: .78rem; }
+      .numbers { grid-template-columns: 1fr 1fr; }
+      .number { padding-inline: 1rem; }
+      .number:nth-child(3) { padding-left: 0; }
+      .row { grid-template-columns: 1.4rem 1fr; gap: .6rem; }
+      .row p, details p { font-size: .91rem; }
+      details p { margin-right: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .001ms !important; }
+    }
+  </style>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to support</a>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Bendout Support home"><img src="bendout-support-assets/app-icon.webp" width="256" height="256" alt=""><span>Bendout<span>Official support</span></span></a>
+      <div class="nav-right"><a href="#help">How to play</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><button class="theme" type="button" aria-label="Switch color theme" title="Switch color theme">◐</button></div>
+    </div>
+  </header>
 
-<h1>Support - Bendout</h1>
-<p class="updated">Last Updated: November 2, 2026</p>
+  <main id="main">
+    <section class="wrap hero" id="top">
+      <div class="hero-copy">
+        <p class="label">Help center</p>
+        <h1>Bendout<br>Support.</h1>
+        <p>Help with puzzles, progress, purchases and ads. Find an answer below or get in touch with us.</p>
+        <div class="actions"><a class="btn" href="#help">Find an answer <span aria-hidden="true">→</span></a><a class="btn alt" href="mailto:ismailturanli91@gmail.com?subject=Bendout%20Support">Email support</a></div>
+        <div class="hero-note"><span>iPhone + iPhone Duo</span><span>Version 1.0</span></div>
+      </div>
+      <figure class="showcase" aria-label="Bendout screenshot gallery">
+        <div class="showcase-head"><span>Inside Bendout</span><span>English artwork</span></div>
+        <div class="showcase-stage">
+          <div class="showcase-poster"><img id="gallery-primary" src="bendout-support-assets/01-tap-slide-escape.webp" width="720" height="1565" fetchpriority="high" alt="Bendout App Store screenshot: Tap, Slide, Escape"></div>
+          <div class="showcase-poster secondary"><img id="gallery-secondary" src="bendout-support-assets/02-every-level-a-picture.webp" width="720" height="1565" alt="Bendout App Store screenshot: Every Level a Picture"></div>
+        </div>
+        <figcaption class="showcase-foot">
+          <div class="showcase-caption" aria-live="polite"><strong id="gallery-caption">Tap, slide, escape</strong><span id="gallery-count">Screenshots 01 + 02 / 08</span></div>
+          <div class="gallery-controls"><button id="gallery-prev" type="button" aria-label="Previous App Store screenshots" disabled>←</button><button id="gallery-next" type="button" aria-label="Next App Store screenshots">→</button></div>
+        </figcaption>
+      </figure>
+    </section>
 
-<p>Bendout is an arrow puzzle game for iPhone published by TuranliApp. This page answers the questions we are asked most often. If your question is not here, write to us and we will answer.</p>
+    <nav class="wrap quick" aria-label="Quick support links">
+      <a href="#arrow"><span>Gameplay</span><strong>Arrow will not move</strong><b aria-hidden="true">→</b></a>
+      <a href="#stars"><span>Scoring</span><strong>Lost a star or life</strong><b aria-hidden="true">→</b></a>
+      <a href="#purchases"><span>Purchases</span><strong>Restore No Ads</strong><b aria-hidden="true">→</b></a>
+      <a href="#backup"><span>Progress</span><strong>Move to a new iPhone</strong><b aria-hidden="true">→</b></a>
+    </nav>
 
-<p class="box"><strong>Email:</strong> <a href="mailto:ismailturanli91@gmail.com">ismailturanli91@gmail.com</a><br>
-We normally reply within a few days, and within one month for a privacy request. Please tell us your iOS version, the level number and what happened.</p>
+    <section class="wrap" id="help">
+      <div class="split">
+        <div class="section-intro"><h2>A little help with the game.</h2><p>Only the arrow you tap moves. The route from its head to the edge must be clear.</p></div>
+        <div class="rows">
+          <article class="row" id="arrow"><span class="row-num">01</span><div><h3>An arrow is blocked</h3><p>Remove every arrow standing between its head and the board edge. If the arrows ahead are already leaving, your correctly ordered tap waits rather than counting as a mistake.</p></div></article>
+          <article class="row" id="stars"><span class="row-num">02</span><div><h3>Warnings, stars and lives</h3><p>The first blocked tap is free, and large boards give extra warnings. Later blocked taps cost stars. Losing all three stars loses the level and costs one of your five lives. One life returns every 30 minutes.</p></div></article>
+          <article class="row"><span class="row-num">03</span><div><h3>Hint, Shield and Smash</h3><p>Hint shows an arrow that can leave now. Shield protects one star from the next mistake. Smash removes one chosen arrow even when it is blocked.</p></div></article>
+          <article class="row"><span class="row-num">04</span><div><h3>Zoom on larger boards</h3><p>Pinch where you want to zoom. Use the zoom out control above the board to return to the whole picture.</p></div></article>
+        </div>
+      </div>
 
-<h2>1. How to play</h2>
-<p>Tap an arrow and it slides out along its own path, but only if the way from its head to the edge of the board is clear. Clear every arrow to win the level. If another arrow is in the way, the tapped arrow shakes and stays.</p>
-<p>Every level starts with three stars. The first blocked tap on a level is only a warning, and big boards forgive one more for every 20 arrows. After that, each blocked tap costs a star. Losing all three stars loses the level and costs one life. Pinch to zoom on big boards; a tap between two arrows does nothing, so a near miss never moves the wrong one.</p>
+      <div class="numbers" aria-label="Bendout game facts">
+        <div class="number"><strong>1,000</strong><span>puzzle levels</span></div>
+        <div class="number"><strong>3</strong><span>stars per level</span></div>
+        <div class="number"><strong>8</strong><span>ranks to earn</span></div>
+        <div class="number"><strong>27</strong><span>supported languages</span></div>
+      </div>
 
-<h2>2. Lives, gold and boosters</h2>
-<p>You have up to five lives. One life comes back every 30 minutes, or you can refill them all with gold. You earn gold by winning levels.</p>
-<ul>
-<li><strong>Hint</strong> shows an arrow that can go now.</li>
-<li><strong>Shield</strong> takes the next mistake on the level instead of a star.</li>
-<li><strong>Smash</strong> removes any arrow, blocked or not.</li>
-</ul>
-<p>Boosters are bought with gold in the Shop. Gold, lives and boosters have no money value and cannot be exchanged or transferred; see the <a href="https://ilgiso91.github.io/turanli-terms/bendout.html">Terms of Use</a>.</p>
+    </section>
 
-<h2>3. Your progress on a new iPhone</h2>
-<p>Bendout has no account. Your levels, stars, gold, lives and boosters are saved on your iPhone and, if iCloud is on, backed up to your own iCloud account. On a new iPhone, or after reinstalling, sign in with the same Apple Account with iCloud turned on and open Bendout: your progress comes back, sometimes a minute or two after the first launch. A level you left half done resumes where you stopped.</p>
-<p>Without iCloud we cannot restore progress, because we never receive it.</p>
+    <section class="wrap faq-wrap" id="faq">
+      <div class="faq-title"><h2>Progress, purchases and ads.</h2><p>Answers to common questions about your game, your purchases and how Bendout works.</p></div>
+      <div class="faq-list">
+        <details id="backup"><summary>How do I move progress to a new iPhone or iPhone Duo?</summary><p>Use the same Apple Account with iCloud turned on, then install and open Bendout on the new iPhone or iPhone Duo. A fresh install can restore cleared levels, stars, best times, gold, lives and boosters from your Bendout iCloud backup. TuranliApp cannot recreate progress when no iCloud backup exists.</p></details>
+        <details id="purchases"><summary>What does Restore purchases bring back?</summary><p>Open Bendout Settings and tap Restore purchases. This restores the No Ads entitlement, including No Ads from the Starter Pack. Gold, lives and boosters are consumable items and are not restored from Apple purchase history. They can return through your Bendout iCloud backup.</p></details>
+        <details><summary>What should I do if a purchase is missing?</summary><p>Close and reopen Bendout with an internet connection. If it is still missing, email us with the product name and Apple receipt. Do not send payment card information.</p></details>
+        <details><summary>When can automatic ads appear?</summary><p>Automatic full screen ad breaks do not appear before level 10. They appear only after a win, never after a loss, at most after every third win and at least three minutes apart. Rewarded videos play only when you choose a reward.</p></details>
+        <details><summary>What does No Ads remove?</summary><p>No Ads removes automatic ad breaks between levels. Optional rewarded videos remain available when you choose to watch one for a reward.</p></details>
+        <details><summary>Can I play offline?</summary><p>Yes. Puzzles and locally saved progress work offline. Internet access is needed for purchases, purchase restore, rewarded videos and iCloud backup updates.</p></details>
+        <details><summary>How do I request a refund?</summary><p>Apple handles Bendout payments and refunds. Visit <a href="https://reportaproblem.apple.com/" rel="noopener">reportaproblem.apple.com</a> and sign in with the Apple Account used for the purchase.</p></details>
+      </div>
+    </section>
 
-<h2>4. Purchases</h2>
-<p><strong>Restore "No ads".</strong> Open Settings in Bendout and tap <strong>Restore purchases</strong>, signed in with the Apple Account that made the purchase. This brings back "No ads", including the one in the starter pack. Gold, lives and boosters you bought come back through your iCloud backup, not through Restore.</p>
-<p><strong>A purchase did not arrive.</strong> Close and reopen Bendout with an internet connection; a confirmed purchase is delivered on the next launch, once. If it is still missing, email us your Apple receipt.</p>
-<p><strong>Refunds.</strong> Apple handles payments, so refunds are requested from Apple at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>; we cannot issue refunds ourselves.</p>
+    <section class="contact" id="contact">
+      <div class="wrap contact-inner">
+        <div class="contact-copy"><h2>Tell us where you got stuck.</h2><p>Include your iPhone model, iOS version, Bendout version and build, the level number and a short description of what happened.</p></div>
+        <div class="contact-action"><a class="btn" href="mailto:ismailturanli91@gmail.com?subject=Bendout%20Support">Email Bendout support <span aria-hidden="true">→</span></a><p>ismailturanli91@gmail.com<br>We normally reply within a few days.</p></div>
+      </div>
+    </section>
+  </main>
 
-<h2>5. Ads</h2>
-<p>Bendout is free and shows ads, kept rare on purpose: none before level 10, only after a win and never after a loss, at most after every third win and at least three minutes apart. Videos only play when you choose a reward. The one-time "No ads" purchase removes the ads between levels; reward videos you choose stay available.</p>
-<p>Ads are limited to content suitable for teens, and categories such as gambling, dating, alcohol and sexual content are blocked. If you still see an ad that seems wrong, write to us with the advertiser's name and we will block it.</p>
-<p><strong>Ad privacy choices.</strong> In the EU, the EEA, the UK, Switzerland and U.S. states with privacy laws, Bendout shows Google's privacy form before ads. You can change your choice at any time in Settings › Privacy › Ad privacy choices.</p>
+  <footer><div class="wrap foot"><span>© 2026 TuranliApp. Last verified November 3, 2026.</span><nav aria-label="Legal links"><a href="https://ilgiso91.github.io/turanli-privacy/bendout.html">Privacy Policy</a><a href="https://ilgiso91.github.io/turanli-terms/bendout.html">Terms of Use</a><a href="#top">Back to top</a></nav></div></footer>
 
-<h2>6. Language</h2>
-<p>Bendout follows your iPhone's language and is available in English and 26 other languages. To play in another language, open the iPhone Settings app, tap Apps › Bendout › Language.</p>
+  <script>
+    const root = document.documentElement;
+    let saved;
+    try { saved = localStorage.getItem("bendout-theme"); } catch (_) {}
+    if (saved === "light" || saved === "dark") root.dataset.theme = saved;
+    document.querySelector(".theme").addEventListener("click", () => {
+      root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem("bendout-theme", root.dataset.theme); } catch (_) {}
+    });
 
-<h2>7. Privacy and terms</h2>
-<p>See the <a href="https://ilgiso91.github.io/turanli-privacy/bendout.html">Privacy Policy</a> and the <a href="https://ilgiso91.github.io/turanli-terms/bendout.html">Terms of Use</a>.</p>
+    const screenshots = [
+      ["01-tap-slide-escape", "Tap, slide, escape"],
+      ["02-every-level-a-picture", "Every level a picture"],
+      ["03-learn-in-one-tap", "Learn in one tap"],
+      ["04-find-the-order", "Find the order"],
+      ["05-fair-ads", "Fair ads"],
+      ["06-1000-levels", "1,000 levels"],
+      ["07-collect-pictures", "Collect pictures"],
+      ["08-climb-ranks", "Climb the ranks"]
+    ];
+    const primary = document.getElementById("gallery-primary");
+    const secondary = document.getElementById("gallery-secondary");
+    const previous = document.getElementById("gallery-prev");
+    const next = document.getElementById("gallery-next");
+    const count = document.getElementById("gallery-count");
+    const caption = document.getElementById("gallery-caption");
+    const compact = matchMedia("(max-width: 479px), (min-width: 768px) and (max-width: 1023px)");
+    let index = 0;
 
-<footer>TuranliApp (İsmail Turanlı) · <a href="mailto:ismailturanli91@gmail.com">ismailturanli91@gmail.com</a></footer>
+    function renderGallery() {
+      const shown = compact.matches ? 1 : 2;
+      index = Math.min(index, screenshots.length - shown);
+      [primary, secondary].forEach((image, position) => {
+        const item = screenshots[Math.min(index + position, screenshots.length - 1)];
+        image.src = "bendout-support-assets/" + item[0] + ".webp";
+        image.alt = "Bendout App Store screenshot: " + item[1];
+      });
+      const first = String(index + 1).padStart(2, "0");
+      const last = String(index + shown).padStart(2, "0");
+      count.textContent = shown === 1 ? "Screenshot " + first + " / 08" : "Screenshots " + first + " + " + last + " / 08";
+      caption.textContent = screenshots[index][1];
+      previous.disabled = index === 0;
+      next.disabled = index >= screenshots.length - shown;
+    }
 
+    previous.addEventListener("click", () => { index = Math.max(0, index - (compact.matches ? 1 : 2)); renderGallery(); });
+    next.addEventListener("click", () => { index = Math.min(screenshots.length - (compact.matches ? 1 : 2), index + (compact.matches ? 1 : 2)); renderGallery(); });
+    compact.addEventListener("change", renderGallery);
+    renderGallery();
+
+    function openLinkedAnswer() {
+      const target = document.getElementById(location.hash.slice(1));
+      if (target && target.tagName === "DETAILS") target.open = true;
+    }
+    addEventListener("hashchange", openLinkedAnswer);
+    openLinkedAnswer();
+  </script>
 </body>
 </html>
